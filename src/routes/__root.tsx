@@ -101,6 +101,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "default" },
       { name: "format-detection", content: "telephone=no" },
+      { property: "og:title", content: "SafeTap Ghana — Touchless Water for Climate-Resilient Sanitation" },
+      { name: "twitter:title", content: "SafeTap Ghana — Touchless Water for Climate-Resilient Sanitation" },
+      { name: "description", content: "A touchless smart water dispenser for improved hygiene and sanitation in public facilities." },
+      { property: "og:description", content: "A touchless smart water dispenser for improved hygiene and sanitation in public facilities." },
+      { name: "twitter:description", content: "A touchless smart water dispenser for improved hygiene and sanitation in public facilities." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1774352a-3bcd-4f5e-8fb3-1eebd04e6b23/id-preview-fa3d31b6--abd10c39-f9a0-4847-88f4-542855a30e3c.lovable.app-1780053206931.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/1774352a-3bcd-4f5e-8fb3-1eebd04e6b23/id-preview-fa3d31b6--abd10c39-f9a0-4847-88f4-542855a30e3c.lovable.app-1780053206931.png" },
     ],
     links: [
       {
