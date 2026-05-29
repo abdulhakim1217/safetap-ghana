@@ -84,6 +84,49 @@ function Index() {
           </div>
         </header>
 
+        {/* Problem Statement */}
+        <section id="problem" className="py-24 px-6 md:px-12 bg-sand border-y border-ink/5">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+              <div className="lg:col-span-5">
+                <span className="inline-block mb-6 px-3 py-1 border border-ink/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-clay">
+                  The Crisis
+                </span>
+                <h2 className="font-display text-4xl md:text-5xl font-black tracking-tight leading-[1.05]">
+                  When sanitation <span className="italic text-clay">fails,</span> children pay the price.
+                </h2>
+              </div>
+              <div className="lg:col-span-7 space-y-8">
+                <p className="text-lg md:text-xl leading-relaxed text-ink/80">
+                  In Northern Ghana, sanitation challenges worsen during floods and droughts. Many schools and public
+                  sanitation facilities lack safe, reliable, and hygienic access to water for handwashing after toilet use.
+                </p>
+                <p className="text-lg md:text-xl leading-relaxed text-ink/80">
+                  During floods, water contamination increases, while overcrowded sanitation facilities elevate the spread
+                  of cholera, diarrhea, typhoid, and other waterborne diseases among children.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                  <ProblemItem icon="🦠" title="Cross-Contamination">
+                    Children touch shared water containers and taps, increasing the risk of disease transmission.
+                  </ProblemItem>
+                  <ProblemItem icon="👧" title="Girls Disproportionately Affected">
+                    Hygiene and menstrual sanitation challenges lead to absenteeism and reduced dignity in schools.
+                  </ProblemItem>
+                  <ProblemItem icon="💧" title="Wasted Water">
+                    Existing systems run continuously or overflow, depleting scarce reserves during drought.
+                  </ProblemItem>
+                  <ProblemItem icon="⚠️" title="Climate-Related Failures">
+                    Manual taps break, pipes crack, and open sources become contaminated when the rains come.
+                  </ProblemItem>
+                </div>
+                <blockquote className="pl-6 border-l-2 border-clay text-lg italic text-ink/70 font-display">
+                  Without safe hygiene infrastructure, sanitation gains are lost even when toilets are available.
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* The Tech / Story */}
         <section id="tech" className="bg-ink text-sand py-24 px-6 md:px-12 overflow-hidden">
           <div className="max-w-7xl mx-auto">
