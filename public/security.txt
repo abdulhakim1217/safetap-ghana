@@ -1,0 +1,8 @@
+Contact: mailto:security@safetap.gh
+Contact: https://github.com/safetap-ghana/website/security/advisories/new
+Expires: 2027-05-29T23:59:59.000Z
+Encryption: https://safetap.gh/pgp-key.txt
+Acknowledgments: https://safetap.gh/security-acknowledgments
+Preferred-Languages: en
+Canonical: https://safetap.gh/.well-known/security.txt
+Policy: https://safetap.gh/security-policy

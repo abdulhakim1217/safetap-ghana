@@ -1,15 +1,48 @@
 {
-  "name": "tanstack_start_ts",
+  "name": "safetap-ghana-website",
+  "version": "1.0.0",
+  "description": "Official website for SafeTap Ghana - Touchless water dispensing technology for climate-resilient sanitation",
   "private": true,
   "sideEffects": false,
   "type": "module",
+  "keywords": [
+    "safetap",
+    "ghana",
+    "water",
+    "sanitation",
+    "touchless",
+    "public-health",
+    "climate-resilience",
+    "WASH"
+  ],
+  "author": {
+    "name": "SafeTap Ghana",
+    "email": "hello@safetap.gh",
+    "url": "https://safetap.gh"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/safetap-ghana/website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/safetap-ghana/website/issues"
+  },
+  "homepage": "https://safetap.gh",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist .output node_modules/.cache",
+    "prepare": "husky install || true",
+    "check-all": "npm run type-check && npm run lint && npm run format:check",
+    "build:analyze": "npm run build && npx vite-bundle-analyzer dist/stats.html"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -78,10 +111,24 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^15.15.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "nitro": "3.0.260429-beta",
     "prettier": "^3.7.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.56.1",
     "vite": "^7.3.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

@@ -72,20 +72,43 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "SafeTap Ghana — Touchless Water for Climate-Resilient Sanitation" },
+      {
+        name: "description",
+        content:
+          "Low-cost, touchless smart water dispensing for schools and public facilities across Northern Ghana. Safer hands, healthier children, resilient communities.",
+      },
+      { name: "author", content: "SafeTap Ghana" },
+      {
+        property: "og:title",
+        content: "SafeTap Ghana — Touchless Water for Climate-Resilient Sanitation",
+      },
+      {
+        property: "og:description",
+        content:
+          "Low-cost, touchless smart water dispensing for schools and public facilities across Northern Ghana.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { property: "og:url", content: "https://safetap.gh" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@SafeTapGhana" },
+      {
+        name: "keywords",
+        content:
+          "water sanitation, Ghana, touchless technology, public health, climate resilience, WASH, Northern Ghana",
+      },
+      { name: "theme-color", content: "#9d7c47" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "default" },
+      { name: "format-detection", content: "telephone=no" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "icon", href: "/favicon.ico" },
+      { rel: "apple-touch-icon", href: "/favicon.ico" },
     ],
   }),
   shellComponent: RootShell,

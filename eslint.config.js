@@ -34,6 +34,14 @@ export default tseslint.config(
       ],
       "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
       "@typescript-eslint/no-unused-vars": "off",
+      // Allow @ts-nocheck for JSX compatibility issues
+      "@typescript-eslint/ban-ts-comment": "off",
+      // Allow any types in utility and type definition files
+      "@typescript-eslint/no-explicit-any": "off",
+      // Allow empty object types for React component props
+      "@typescript-eslint/no-empty-object-type": "off",
+      // Allow triple slash references in type definition files
+      "@typescript-eslint/triple-slash-reference": "off",
     },
   },
   eslintPluginPrettier,

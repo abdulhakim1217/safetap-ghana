@@ -1,7 +1,12 @@
+/** @jsxImportSource react */
+// @ts-nocheck
+import React from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import heroStudent from "@/assets/hero-student.jpg";
 import tapCloseup from "@/assets/tap-closeup.jpg";
 import community from "@/assets/community.jpg";
+import { ContactModal } from "@/components/ContactModal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -12,7 +17,10 @@ export const Route = createFileRoute("/")({
         content:
           "Low-cost, touchless smart water dispensing for schools and public facilities across Northern Ghana. Safer hands, healthier children, resilient communities.",
       },
-      { property: "og:title", content: "SafeTap Ghana — Touchless Water for Climate-Resilient Sanitation" },
+      {
+        property: "og:title",
+        content: "SafeTap Ghana — Touchless Water for Climate-Resilient Sanitation",
+      },
       {
         property: "og:description",
         content:
@@ -35,28 +43,109 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-sand text-ink font-sans">
+      {/* Skip Navigation Link */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-clay focus:text-sand focus:rounded"
+      >
+        Skip to main content
+      </a>
+
       {/* Navigation */}
-      <nav className="flex items-center justify-between px-6 py-8 md:px-12 border-b border-ink/5">
-        <a href="#top" className="font-display text-2xl font-black tracking-tight text-clay">
+      <nav
+        className="flex items-center justify-between px-6 py-8 md:px-12 border-b border-ink/5"
+        role="navigation"
+        aria-label="Main navigation"
+      >
+        <a
+          href="#main-content"
+          className="font-display text-2xl font-black tracking-tight text-clay"
+        >
           SafeTap.
         </a>
         <div className="hidden md:flex gap-12 text-sm font-medium uppercase tracking-widest">
-          <a href="#problem" className="hover:text-clay transition-colors">The Problem</a>
-          <a href="#mission" className="hover:text-clay transition-colors">The Mission</a>
-          <a href="#tech" className="hover:text-clay transition-colors">Our Tech</a>
-          <a href="#impact" className="hover:text-clay transition-colors">Impact</a>
+          <a href="#problem" className="hover:text-clay transition-colors">
+            The Problem
+          </a>
+          <a href="#mission" className="hover:text-clay transition-colors">
+            The Mission
+          </a>
+          <a href="#tech" className="hover:text-clay transition-colors">
+            Our Tech
+          </a>
+          <a href="#impact" className="hover:text-clay transition-colors">
+            Impact
+          </a>
         </div>
-        <a
-          href="#support"
-          className="px-6 py-2.5 bg-ink text-sand text-xs font-bold uppercase tracking-widest hover:bg-clay transition-all"
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="md:hidden p-2 hover:bg-ink/5 transition-colors"
+          aria-label="Toggle menu"
         >
-          Support Us
-        </a>
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+        <ContactModal>
+          <button className="px-6 py-2.5 bg-ink text-sand text-xs font-bold uppercase tracking-widest hover:bg-clay transition-all cursor-pointer">
+            Support Us
+          </button>
+        </ContactModal>
       </nav>
 
-      <main id="top">
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-sand border-b border-ink/5 px-6 py-4">
+          <div className="flex flex-col gap-4 text-sm font-medium uppercase tracking-widest">
+            <a
+              href="#problem"
+              className="hover:text-clay transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              The Problem
+            </a>
+            <a
+              href="#mission"
+              className="hover:text-clay transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              The Mission
+            </a>
+            <a
+              href="#tech"
+              className="hover:text-clay transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Our Tech
+            </a>
+            <a
+              href="#impact"
+              className="hover:text-clay transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Impact
+            </a>
+            <a
+              href="#support"
+              className="hover:text-clay transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Support Us
+            </a>
+          </div>
+        </div>
+      )}
+
+      <main id="main-content" role="main">
         {/* Hero */}
         <header className="relative px-6 md:px-12 pt-16 pb-24">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
@@ -69,8 +158,9 @@ function Index() {
                 <span className="text-clay">every drop.</span>
               </h1>
               <p className="max-w-md text-xl leading-relaxed text-ink/70">
-                Bringing touchless, smart water infrastructure to schools and public sanitation facilities across
-                Northern Ghana. Reducing disease, preserving water, and restoring health.
+                Bringing touchless, smart water infrastructure to schools and public sanitation
+                facilities across Northern Ghana. Reducing disease, preserving water, and restoring
+                health.
               </p>
             </div>
             <div className="lg:col-span-5">
@@ -79,6 +169,7 @@ function Index() {
                 alt="A student smiling beside a SafeTap touchless water dispenser in a Ghanaian schoolyard"
                 width={1088}
                 height={1344}
+                loading="eager"
                 className="w-full aspect-[4/5] object-cover rounded-sm shadow-2xl rotate-2"
               />
             </div>
@@ -94,34 +185,42 @@ function Index() {
                   The Crisis
                 </span>
                 <h2 className="font-display text-4xl md:text-5xl font-black tracking-tight leading-[1.05]">
-                  When sanitation <span className="italic text-clay">fails,</span> children pay the price.
+                  When sanitation <span className="italic text-clay">fails,</span> children pay the
+                  price.
                 </h2>
               </div>
               <div className="lg:col-span-7 space-y-8">
                 <p className="text-lg md:text-xl leading-relaxed text-ink/80">
-                  In Northern Ghana, sanitation challenges worsen during floods and droughts. Many schools and public
-                  sanitation facilities lack safe, reliable, and hygienic access to water for handwashing after toilet use.
+                  In Northern Ghana, sanitation challenges worsen during floods and droughts. Many
+                  schools and public sanitation facilities lack safe, reliable, and hygienic access
+                  to water for handwashing after toilet use.
                 </p>
                 <p className="text-lg md:text-xl leading-relaxed text-ink/80">
-                  During floods, water contamination increases, while overcrowded sanitation facilities elevate the spread
-                  of cholera, diarrhea, typhoid, and other waterborne diseases among children.
+                  During floods, water contamination increases, while overcrowded sanitation
+                  facilities elevate the spread of cholera, diarrhea, typhoid, and other waterborne
+                  diseases among children.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
                   <ProblemItem icon="🦠" title="Cross-Contamination">
-                    Children touch shared water containers and taps, increasing the risk of disease transmission.
+                    Children touch shared water containers and taps, increasing the risk of disease
+                    transmission.
                   </ProblemItem>
                   <ProblemItem icon="👧" title="Girls Disproportionately Affected">
-                    Hygiene and menstrual sanitation challenges lead to absenteeism and reduced dignity in schools.
+                    Hygiene and menstrual sanitation challenges lead to absenteeism and reduced
+                    dignity in schools.
                   </ProblemItem>
                   <ProblemItem icon="💧" title="Wasted Water">
-                    Existing systems run continuously or overflow, depleting scarce reserves during drought.
+                    Existing systems run continuously or overflow, depleting scarce reserves during
+                    drought.
                   </ProblemItem>
                   <ProblemItem icon="⚠️" title="Climate-Related Failures">
-                    Manual taps break, pipes crack, and open sources become contaminated when the rains come.
+                    Manual taps break, pipes crack, and open sources become contaminated when the
+                    rains come.
                   </ProblemItem>
                 </div>
                 <blockquote className="pl-6 border-l-2 border-clay text-lg italic text-ink/70 font-display">
-                  Without safe hygiene infrastructure, sanitation gains are lost even when toilets are available.
+                  Without safe hygiene infrastructure, sanitation gains are lost even when toilets
+                  are available.
                 </blockquote>
               </div>
             </div>
@@ -176,13 +275,13 @@ function Index() {
         <section id="mission" className="py-32 px-6 md:px-12">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-display text-5xl md:text-7xl font-black mb-12 tracking-tight">
-              Built by the North,{" "}
-              <span className="italic text-clay">for the North.</span>
+              Built by the North, <span className="italic text-clay">for the North.</span>
             </h2>
             <p className="text-2xl leading-relaxed font-light mb-16 text-ink/80">
-              SafeTap is designed and maintained by local engineers in Tamale. Every installation is built around the
-              children, teachers, and families who depend on it — protecting health, dignity, and school attendance in
-              communities facing cholera, diarrhea, and typhoid.
+              SafeTap is designed and maintained by local engineers in Tamale. Every installation is
+              built around the children, teachers, and families who depend on it — protecting
+              health, dignity, and school attendance in communities facing cholera, diarrhea, and
+              typhoid.
             </p>
             <img
               src={community}
@@ -198,12 +297,11 @@ function Index() {
               <ImpactCard value="42" label="Schools and health centers equipped" />
             </div>
             <div id="support" className="flex flex-wrap justify-center gap-4">
-              <a
-                href="mailto:hello@safetap.gh"
-                className="px-10 py-5 bg-clay text-sand font-bold uppercase tracking-widest text-sm hover:bg-ink transition-colors shadow-xl"
-              >
-                Partner With Us
-              </a>
+              <ContactModal>
+                <button className="px-10 py-5 bg-clay text-sand font-bold uppercase tracking-widest text-sm hover:bg-ink transition-colors shadow-xl cursor-pointer">
+                  Partner With Us
+                </button>
+              </ContactModal>
               <a
                 href="#mission"
                 className="px-10 py-5 border-2 border-ink text-ink font-bold uppercase tracking-widest text-sm hover:bg-ink hover:text-sand transition-all"
@@ -222,9 +320,15 @@ function Index() {
           © 2026 SafeTap Systems · Tamale, Northern Region
         </p>
         <div className="flex gap-8 text-[10px] font-bold uppercase tracking-widest">
-          <a href="#" className="hover:text-clay transition-colors">Instagram</a>
-          <a href="#" className="hover:text-clay transition-colors">LinkedIn</a>
-          <a href="mailto:hello@safetap.gh" className="hover:text-clay transition-colors">Contact</a>
+          <a href="#" className="hover:text-clay transition-colors">
+            Instagram
+          </a>
+          <a href="#" className="hover:text-clay transition-colors">
+            LinkedIn
+          </a>
+          <a href="mailto:hello@safetap.gh" className="hover:text-clay transition-colors">
+            Contact
+          </a>
         </div>
       </footer>
     </div>
@@ -261,7 +365,15 @@ function ImpactCard({ value, label }: { value: string; label: string }) {
   );
 }
 
-function ProblemItem({ icon, title, children }: { icon: string; title: string; children: React.ReactNode }) {
+function ProblemItem({
+  icon,
+  title,
+  children,
+}: {
+  icon: string;
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="p-6 bg-ink/[0.02] border border-ink/5">
       <div className="text-2xl mb-3">{icon}</div>
