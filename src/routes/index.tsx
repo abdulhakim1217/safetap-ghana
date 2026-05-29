@@ -43,6 +43,7 @@ function Index() {
           SafeTap.
         </a>
         <div className="hidden md:flex gap-12 text-sm font-medium uppercase tracking-widest">
+          <a href="#problem" className="hover:text-clay transition-colors">The Problem</a>
           <a href="#mission" className="hover:text-clay transition-colors">The Mission</a>
           <a href="#tech" className="hover:text-clay transition-colors">Our Tech</a>
           <a href="#impact" className="hover:text-clay transition-colors">Impact</a>
@@ -226,24 +227,14 @@ function Index() {
           <a href="mailto:hello@safetap.gh" className="hover:text-clay transition-colors">Contact</a>
         </div>
       </footer>
-function ImpactCard({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="p-8 border border-ink/10 bg-sand">
-      <div className="font-display text-5xl font-black text-clay mb-3">{value}</div>
-      <p className="text-sm uppercase tracking-widest text-ink/60 font-bold">{label}</p>
     </div>
   );
 }
 
-function ProblemItem({ icon, title, children }: { icon: string; title: string; children: React.ReactNode }) {
+function Feature({ number, title, body }: { number: string; title: string; body: string }) {
   return (
-    <div className="p-6 bg-ink/[0.02] border border-ink/5">
-      <div className="text-2xl mb-3">{icon}</div>
-      <h3 className="font-bold text-sm uppercase tracking-wider mb-2 text-ink">{title}</h3>
-      <p className="text-sm leading-relaxed text-ink/60">{children}</p>
-    </div>
-  );
-}
+    <div className="flex gap-6 items-start">
+      <span className="font-display text-4xl text-savanna shrink-0">{number}</span>
       <div>
         <h3 className="text-lg font-bold uppercase tracking-wider mb-2">{title}</h3>
         <p className="text-sand/60 leading-relaxed">{body}</p>
@@ -266,6 +257,16 @@ function ImpactCard({ value, label }: { value: string; label: string }) {
     <div className="p-8 border border-ink/10 bg-sand">
       <div className="font-display text-5xl font-black text-clay mb-3">{value}</div>
       <p className="text-sm uppercase tracking-widest text-ink/60 font-bold">{label}</p>
+    </div>
+  );
+}
+
+function ProblemItem({ icon, title, children }: { icon: string; title: string; children: React.ReactNode }) {
+  return (
+    <div className="p-6 bg-ink/[0.02] border border-ink/5">
+      <div className="text-2xl mb-3">{icon}</div>
+      <h3 className="font-bold text-sm uppercase tracking-wider mb-2 text-ink">{title}</h3>
+      <p className="text-sm leading-relaxed text-ink/60">{children}</p>
     </div>
   );
 }
